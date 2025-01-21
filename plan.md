@@ -11,14 +11,18 @@ We would like you to create a web application that produces some kind of user ma
 
 ## My Plan
 
-- set up hono backend server to host RESTful API
-  - install packages
-  - small test route to ensure it's working
-- use JSON file to store user data
-  - use node fs to create, read and write
-  - when posting a new user, check if the json file exists
-    - if it doesn't, create it
-    - otherwise write new user to the file
+### Backend
+
+- set up hono backend server to host RESTful API ✅
+  - install packages ✅
+  - small test route to ensure it's working ✅
+- use JSON file to store user data ✅
+  - check if the json file exists ✅
+    - if it doesn't, create it ✅
+  - use node fs to:
+    - create ✅
+    - read ✅
+    - write
 - write POST route to add a new user
   - test
 - write GET routes to:
@@ -28,8 +32,9 @@ We would like you to create a web application that produces some kind of user ma
 - write PUT route to update a user
   - test
 - write DELETE route to delete a user
-
   - test
+
+### Frontend
 
 - build frontend using React and Vite
 - Simple interface to:
