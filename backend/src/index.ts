@@ -1,9 +1,12 @@
-import { serve } from '@hono/node-server'
-import { Hono } from 'hono' 
+import { serve } from '@hono/node-server';
+import { Hono } from 'hono';
+import { cors } from 'hono/cors';
 import { checkDataFile, readDataFile, writeDataFile } from '../utils/file-system-helpers.js';
 import type {User} from '../types/types.ts';
 
 const app = new Hono()
+
+app.use('/api/*', cors())
 
 checkDataFile();
 
