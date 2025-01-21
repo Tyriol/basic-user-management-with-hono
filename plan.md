@@ -23,11 +23,11 @@ We would like you to create a web application that produces some kind of user ma
     - create ✅
     - read ✅
     - write
-- write POST route to add a new user
-  - test
 - write GET routes to:
-  - Fetch all users
+  - Fetch all users ✅
   - Fetch a user
+  - test
+- write POST route to add a new user
   - test
 - write PUT route to update a user
   - test
