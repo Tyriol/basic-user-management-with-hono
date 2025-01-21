@@ -22,13 +22,13 @@ We would like you to create a web application that produces some kind of user ma
   - use node fs to:
     - create ✅
     - read ✅
-    - write
-- write GET routes to:
+    - write ✅
+- write GET routes to: ✅
   - Fetch all users ✅
-  - Fetch a user
-  - test
-- write POST route to add a new user
-  - test
+  - Fetch a user ✅
+  - test ✅
+- write POST route to add a new user ✅
+  - test ✅
 - write PUT route to update a user
   - test
 - write DELETE route to delete a user

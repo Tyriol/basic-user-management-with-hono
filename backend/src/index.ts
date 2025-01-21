@@ -1,7 +1,7 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono' 
 import { checkDataFile, readDataFile, writeDataFile } from '../utils/file-system-helpers.js';
-import type {User, Users} from '../types/types.ts';
+import type {User} from '../types/types.ts';
 
 const app = new Hono()
 
@@ -20,7 +20,6 @@ app.get('/api/users', (c) => {
   }
 })
 
-// get user by id
 app.get('/api/users/:id', (c) => {
   try {
     const { id } = c.req.param();
@@ -38,18 +37,40 @@ app.get('/api/users/:id', (c) => {
 
 app.post("/api/users", async (c) => {
   try {
-    const users = readDataFile()
-    console.log(users);
-    
+    const users = readDataFile();    
     const newUser = await c.req.json();
     users.push(newUser);
     writeDataFile(users);
     return c.json({
       message: "User Created Successfully"
-    })
+    }, 201)
   } catch (err) {
     return c.json({
       error: `failed to add new user: ${err}`
+    }, 500)
+  }
+})
+
+app.put("/api/users/:id", async (c) => {
+  try {
+    const { id } = c.req.param();
+    const users = readDataFile();    
+    const updatedUser = await c.req.json();
+    const updatedUserIndex = users.findIndex((u: User) => u.id === Number(id))
+    if(updatedUserIndex === -1) {
+      return c.json({
+        error: "User Not Found"
+      }, 404)
+    }
+    users[updatedUserIndex] = updatedUser;
+    writeDataFile(users);
+    return c.json({
+      message: "User updated successfully",
+      updatedUser
+    })
+  } catch (err) {
+    return c.json({
+      error: `failed to update user: ${err}`
     }, 500)
   }
 })
