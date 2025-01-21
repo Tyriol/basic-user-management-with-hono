@@ -1,5 +1,5 @@
 import * as fs from 'node:fs';
-import type { User } from '../types/types.js';
+import type { User, Users } from '../types/types.js';
 
 const USER_DATA = "./data/users.json"
 
@@ -19,9 +19,9 @@ export const readDataFile = () => {
     }
 }
 
-export const writeDataFile = (user: User) => {
+export const writeDataFile = (users: Users) => {
     try {
-        fs.writeFileSync(USER_DATA, JSON.stringify(user, null, 2))
+        fs.writeFileSync(USER_DATA, JSON.stringify(users, null, 2))
     } catch (err) {
         console.error("Failed to write user data", err);
         throw new Error("Failed to write user data");
