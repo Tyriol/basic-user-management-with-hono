@@ -75,6 +75,23 @@ app.put("/api/users/:id", async (c) => {
   }
 })
 
+app.delete("/api/users/:id", (c) => {
+  try {
+    const { id } = c.req.param();
+    const users = readDataFile();
+    const usersAfterDelete = users.filter((u: User) => u.id !== Number(id));
+    writeDataFile(usersAfterDelete);
+    return c.json({
+      message: "User deleted successfully",
+      usersAfterDelete
+    })
+  } catch (err) {
+    return c.json({
+      error: `failed to delete user: ${err}`
+    }, 500)
+  }
+})
+
 const port = 3000
 console.log(`Server is running on http://localhost:${port}`)
 
