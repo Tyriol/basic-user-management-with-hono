@@ -1,12 +1,13 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono' 
 import { checkDataFile, readDataFile, writeDataFile } from '../utils/file-system-helpers.js';
+import type {User, Users} from '../types/types.ts';
 
 const app = new Hono()
 
 checkDataFile();
 
-app.get('/users', (c) => {
+app.get('/api/users', (c) => {
   try {
     const users = readDataFile();
     return c.json({
@@ -20,8 +21,22 @@ app.get('/users', (c) => {
 })
 
 // get user by id
+app.get('/api/users/:id', (c) => {
+  try {
+    const { id } = c.req.param();
+    const users = readDataFile();
+    const user = users.filter((u: User) => u.id === Number(id));
+    return c.json({
+      user
+    })
+  } catch (err) {
+    return c.json({
+      error: `failed to fetch users: ${err}`
+    }, 500)
+  }
+})
 
-app.post("/users", async (c) => {
+app.post("/api/users", async (c) => {
   try {
     const users = readDataFile()
     console.log(users);
