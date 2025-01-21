@@ -1,14 +1,22 @@
 import { serve } from '@hono/node-server'
-import { Hono } from 'hono'
-import * as fs from 'node:fs'; 
+import { Hono } from 'hono' 
 import { checkDataFile, readDataFile } from '../utils/file-system-helpers.js';
 
 const app = new Hono()
 
 checkDataFile();
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
+app.get('/users', (c) => {
+  try {
+    const users = readDataFile();
+    return c.json({
+      users
+    })
+  } catch (err) {
+    return c.json({
+      error: `failed to fetch users ${err}`
+    }, 500)
+  }
 })
 
 const port = 3000
