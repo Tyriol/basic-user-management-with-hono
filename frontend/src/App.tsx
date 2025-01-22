@@ -56,6 +56,22 @@ function App() {
       );
     }
 
+    const deleteUser = async (userToDelete: User) => {
+      const response = await fetch(
+        `http://localhost:3000/api/users/${userToDelete.id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userToDelete),
+        }
+      );
+      const usersAfterDelete = await response.json();      
+      setUsers(usersAfterDelete.usersAfterDelete);
+    }
+
     return (
         <>
             <header>
@@ -77,7 +93,7 @@ function App() {
                                 <div className="role">Role: {user.role}</div>
                                 <div className="actions">
                                     <button onClick={() => setEditingUser(user)}>Update</button>
-                                    <button>Delete</button>
+                                    <button onClick={() => deleteUser(user)}>Delete</button>
                                 </div>
                             </li>
                         )
