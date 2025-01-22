@@ -1,7 +1,14 @@
 import { useState, useEffect } from 'react'
 import type { User } from '../../../../backend/types/types.ts'
 
-function Form({ addUser, updateUser, editingUser, setEditingUser }) {
+interface formProps {
+    addUser: (user:User) => void;
+    updateUser: (user:User) => void; 
+    editingUser: User | null;
+    setEditingUser: (user:User | null) => void;
+}
+
+function Form({ addUser, updateUser, editingUser, setEditingUser }: formProps) {
     const [formData, setFormData] = useState<User>({
         name: '',
         id: '',
