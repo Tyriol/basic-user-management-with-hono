@@ -40,6 +40,11 @@ function Form({ addUser, updateUser, editingUser, setEditingUser }: formProps) {
 
   return (
     <form onSubmit={handleSubmit}>
+      {editingUser ? (
+        <h2>Update User</h2>
+      ) : (
+        <h2>Add a new User</h2>
+      )}
       <div className="label-input">
         <label htmlFor="name">Name:</label>
         <input
@@ -76,7 +81,7 @@ function Form({ addUser, updateUser, editingUser, setEditingUser }: formProps) {
           onChange={handleChange}
         />
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit">{editingUser ? "Update" : "Add User"}</button>
     </form>
   )
 }
