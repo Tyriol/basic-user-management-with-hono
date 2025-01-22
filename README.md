@@ -75,3 +75,4 @@ This will start the Vite app and give you a URL to access the app from. Likely: 
 - TODO: Tidy up backend with routes and helpers.
 - TODO: Make it look better
 - TODO: Use async versions of node file system methods or an external database
+- TODO: Update code (frontend and backend) in order to be able to deploy this live (once I've received feedback)
