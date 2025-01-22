@@ -1,12 +1,14 @@
 import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
+import { logger } from 'hono/logger';
 import { checkDataFile, readDataFile, writeDataFile } from '../utils/file-system-helpers.js';
 import type {User} from '../types/types.ts';
 
 const app = new Hono()
 
 app.use('/api/*', cors())
+app.use(logger())
 
 checkDataFile();
 
@@ -15,7 +17,7 @@ app.get('/api/users', (c) => {
     const users = readDataFile();
     return c.json({
       users
-    })
+    }, 200)
   } catch (err) {
     return c.json({
       error: `failed to fetch users: ${err}`
@@ -30,7 +32,7 @@ app.get('/api/users/:id', (c) => {
     const user = users.filter((u: User) => u.id === id);
     return c.json({
       user
-    })
+    }, 200)
   } catch (err) {
     return c.json({
       error: `failed to fetch users: ${err}`
@@ -70,7 +72,7 @@ app.put("/api/users/:id", async (c) => {
     return c.json({
       message: "User updated successfully",
       updatedUser
-    })
+    }, 200)
   } catch (err) {
     return c.json({
       error: `failed to update user: ${err}`
@@ -82,12 +84,18 @@ app.delete("/api/users/:id", (c) => {
   try {
     const { id } = c.req.param();
     const users = readDataFile();
+    const userIndex = users.findIndex((u: User) => u.id === id)
+    if(userIndex === -1) {
+      return c.json({
+        error: "User Not Found"
+      }, 404)
+    }
     const usersAfterDelete = users.filter((u: User) => u.id !== id);
     writeDataFile(usersAfterDelete);
     return c.json({
       message: "User deleted successfully",
       usersAfterDelete
-    })
+    }, 200)
   } catch (err) {
     return c.json({
       error: `failed to delete user: ${err}`
