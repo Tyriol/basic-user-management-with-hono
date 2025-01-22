@@ -14,8 +14,8 @@ function UserCard({ user, deleteUser, setEditingUser }: UserCardProps) {
       <div className="email-address">Email Address: {user.email}</div>
       <div className="role">Role: {user.role}</div>
       <div className="actions">
-        <button onClick={() => setEditingUser(user)}>Update</button>
-        <button onClick={() => deleteUser(user)}>Delete</button>
+        <button className="update" onClick={() => setEditingUser(user)}>Update</button>
+        <button className="delete" onClick={() => deleteUser(user)}>Delete</button>
       </div>
     </li>
   )
