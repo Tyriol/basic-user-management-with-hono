@@ -5,13 +5,6 @@
   text-align: center;
 }
 
-/* button {
-  &:hover {
-    background-color: aquamarine;
-  }
-  background-color: aliceblue;
-} */
-
 button {
   align-items: center;
   background-color: #119704;
@@ -19,7 +12,7 @@ button {
   border-radius: .25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
+  color: rgb(0, 0, 0);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.1rem;
@@ -28,7 +21,7 @@ button {
   justify-content: center;
   line-height: 1.25;
   margin: 0;
-  padding: 0.75rem;
+  padding: 0.50rem;
   transition: all 250ms;
   touch-action: manipulation;
   vertical-align: baseline;
@@ -38,7 +31,7 @@ button {
   :focus {
     border-color: rgba(0, 0, 0, 0.15);
     box-shadow: rgba(0, 0, 0, 0.4) 0 4px 12px;
-    color: rgba(0, 0, 0, 0.65);
+    color: rgb(0, 0, 0);
   }
 
   &:hover {
@@ -107,4 +100,16 @@ form {
 
 .label-input label {
   text-align: left;
+}
+
+@media (min-width: 768px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+  }
+
+  .label-input {
+    grid-template-columns: 1fr 2.5fr;
+  }
 }

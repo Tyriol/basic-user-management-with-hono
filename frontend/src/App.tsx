@@ -79,18 +79,21 @@ function App() {
           editingUser={editingUser}
           setEditingUser={setEditingUser}
         />
-        <ul>
-          {users.map((user: User) => {
-            return (
-              <UserCard
-                key={user.id}
-                user={user}
-                deleteUser={deleteUser}
-                setEditingUser={setEditingUser}
-              />
-            )
-          })}
-        </ul>
+        <div className="user-list">
+          <h2>Users</h2>
+          <ul>
+            {users.map((user: User) => {
+              return (
+                <UserCard
+                  key={user.id}
+                  user={user}
+                  deleteUser={deleteUser}
+                  setEditingUser={setEditingUser}
+                />
+              )
+            })}
+          </ul>
+        </div>
       </main>
     </>
   )
