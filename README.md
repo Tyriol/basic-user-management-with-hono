@@ -19,6 +19,7 @@ Built using:
 - TypeScript (both backend and frontend) because I want to get better and more comfortable with ensuring I have everything typed correctly to avoid errors as much as possible.
 - Node.js and Hono because I've seen a lot about Hono and wanted to try it out in comparison to Express. It was really easy to use, the context it provides is very easy to access and the fact that it comes with a lot of the things you'd normally want to install like CORS, logging, validation etc, it comes with for free.
 - Vite and React because React is still very commonly used in production and I want to improve my skills there.
+- Data storage: JSON file using Synchronous node file system methods. For the scale and purpose of this exercise, this was enough, but going forward I might switch to the async versions or even use an external db.
 
 ## Set up instructions:
 
@@ -72,4 +73,5 @@ This will start the Vite app and give you a URL to access the app from. Likely: 
   - As good practice, and to resolve issue when an empty form is submitted
 - TODO: Update ID to be an automatically created UUID
 - TODO: Tidy up backend with routes and helpers.
-- TODO:Make it look better
+- TODO: Make it look better
+- TODO: Use async versions of node file system methods or an external database
