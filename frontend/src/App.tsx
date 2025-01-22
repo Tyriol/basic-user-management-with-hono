@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import type { User, Users } from '.,/../../../backend/types/types.ts'
 import Form from './components/Form/Form.tsx'
+import UserCard from './components/UserCard/UserCard.tsx'
 
 function App() {
     const [users, setUsers] = useState<Users>([]);
@@ -82,20 +83,7 @@ function App() {
                 <ul>
                     {users.map((user: User) => {
                         return (
-                            <li className="user" key={user.id}>
-                                <div className="user-name">
-                                    Name: {user.name}
-                                </div>
-                                <div className="user-id">ID: {user.id}</div>
-                                <div className="email-address">
-                                    Email Address: {user.email}
-                                </div>
-                                <div className="role">Role: {user.role}</div>
-                                <div className="actions">
-                                    <button onClick={() => setEditingUser(user)}>Update</button>
-                                    <button onClick={() => deleteUser(user)}>Delete</button>
-                                </div>
-                            </li>
+                            <UserCard user={user} deleteUser={deleteUser} setEditingUser={setEditingUser}/>
                         )
                     })}
                 </ul>
