@@ -27,7 +27,7 @@ app.get('/api/users/:id', (c) => {
   try {
     const { id } = c.req.param();
     const users = readDataFile();
-    const user = users.filter((u: User) => u.id === Number(id));
+    const user = users.filter((u: User) => u.id === id);
     return c.json({
       user
     })
@@ -59,7 +59,7 @@ app.put("/api/users/:id", async (c) => {
     const { id } = c.req.param();
     const users = readDataFile();    
     const updatedUser = await c.req.json();
-    const updatedUserIndex = users.findIndex((u: User) => u.id === Number(id))
+    const updatedUserIndex = users.findIndex((u: User) => u.id === id)
     if(updatedUserIndex === -1) {
       return c.json({
         error: "User Not Found"
@@ -82,7 +82,7 @@ app.delete("/api/users/:id", (c) => {
   try {
     const { id } = c.req.param();
     const users = readDataFile();
-    const usersAfterDelete = users.filter((u: User) => u.id !== Number(id));
+    const usersAfterDelete = users.filter((u: User) => u.id !== id);
     writeDataFile(usersAfterDelete);
     return c.json({
       message: "User deleted successfully",

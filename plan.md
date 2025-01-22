@@ -29,17 +29,21 @@ We would like you to create a web application that produces some kind of user ma
   - test ✅
 - write POST route to add a new user ✅
   - test ✅
-- write PUT route to update a user
-  - test
-- write DELETE route to delete a user
-  - test
+- write PUT route to update a user ✅
+  - test ✅
+- write DELETE route to delete a user ✅
+  - test ✅
 
 ### Frontend
 
 - build frontend using React and Vite
 - Simple interface to:
-  - Display all users in a list
-  - Form to add a new user
+  - Display all users in a list ✅
+  - Form to add a new user ✅
   - Buttons to:
-    - Update User
-    - Delete User
+    - Update User ✅
+    - Delete User ✅
+- form component ✅
+- user component
+- style form
+- make form text dynamic based on if it's being edited or not
