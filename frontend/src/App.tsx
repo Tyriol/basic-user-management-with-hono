@@ -38,13 +38,31 @@ function App() {
       );
     }
 
+    const updateUser = async (updatedUser: User) => {
+      const updatedUsers = users.map(user => 
+        user.id === updatedUser.id ? updatedUser : user
+      );
+      setUsers(updatedUsers);
+      await fetch(
+        `http://localhost:3000/api/users/${updatedUser.id}`,
+        {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedUser),
+        }
+      );
+    }
+
     return (
         <>
             <header>
                 <h1>User Management</h1>
             </header>
             <main>
-                <Form addUser={addUser} updateUser="" editingUser={editingUser} setEditingUser={setEditingUser} />
+                <Form addUser={addUser} updateUser={updateUser} editingUser={editingUser} setEditingUser={setEditingUser} />
                 <ul>
                     {users.map((user: User) => {
                         return (
