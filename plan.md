@@ -36,7 +36,7 @@ We would like you to create a web application that produces some kind of user ma
 
 ### Frontend
 
-- build frontend using React and Vite
+- build frontend using React and Vite ✅
 - Simple interface to:
   - Display all users in a list ✅
   - Form to add a new user ✅
@@ -44,6 +44,6 @@ We would like you to create a web application that produces some kind of user ma
     - Update User ✅
     - Delete User ✅
 - form component ✅
-- user component
-- style form
-- make form text dynamic based on if it's being edited or not
+- user component ✅
+- style form ✅
+- make form text dynamic based on if it's being edited or not ✅
